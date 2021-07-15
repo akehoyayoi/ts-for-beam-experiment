@@ -7,7 +7,10 @@ export async function subscribe () {
     client.on('message', async (topic, payload) => {
         console.log(`[function:subscribe] topic=${topic} payload=${payload}`)
         try {
-            client.publish('edge2cloud','test')  
+            client.publish('edge2cloud',
+            JSON.stringify({
+                data: 'test'
+            }))  
         } catch (err) {
             console.log(err)
         }
